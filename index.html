@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Divoit · Google review replies you approve by text</title>
+<meta name="description" content="Divoit answers every Google review in your voice. You get a text, reply POST, and it goes live. Founding price $49/month for local businesses.">
+<meta property="og:title" content="Divoit · Review replies you approve by text">
+<meta property="og:description" content="Every Google review answered in your voice. Approve by text. No app, no logins.">
+<meta property="og:url" content="https://divoit.com/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://divoit.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f6b57'/%3E%3Cpath d='M9 10h14v10H13l-4 3z' fill='none' stroke='white' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one narrow column — promise + phone demo, three steps, founding offer with the text-to-join call, then answers */
+:root{
+  --bg:#f6f4ef; --surface:#ffffff; --line:#e2ddd2; --fg:#1d211f; --muted:#5f665f;
+  --accent:#1f6b57; --accent-ink:#ffffff; --accent-soft:#e1efe9;
+  --bubble-in:#e9e6de; --bubble-out:#1f6b57; --bubble-out-ink:#ffffff; --star:#c98a12; --hold:#a2462d;
+  --font-display:"Fraunces", Georgia, "Times New Roman", serif;
+  --font-ui:"Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141816; --surface:#1c211e; --line:#2e3631; --fg:#ecefec; --muted:#a2aba5;
+  --accent:#62c3a2; --accent-ink:#0d1512; --accent-soft:#1c3a30;
+  --bubble-in:#2a302c; --bubble-out:#2f8a70; --bubble-out-ink:#ffffff; --star:#e8b04a; --hold:#ef8d72; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141816; --surface:#1c211e; --line:#2e3631; --fg:#ecefec; --muted:#a2aba5;
+  --accent:#62c3a2; --accent-ink:#0d1512; --accent-soft:#1c3a30;
+  --bubble-in:#2a302c; --bubble-out:#2f8a70; --bubble-out-ink:#ffffff; --star:#e8b04a; --hold:#ef8d72; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-ui);font-size:16px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:28px 56px}
+.wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.1rem,5vw,3.3rem);line-height:1.06;letter-spacing:-0.02em}
+h2{font-family:var(--font-display);font-weight:600;font-size:clamp(1.5rem,3vw,2rem);line-height:1.15}
+h3{font-size:1rem;font-weight:700}
+p{margin:0;max-width:62ch}
+.eyebrow{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.muted{color:var(--muted)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em}
+.brand i{width:28px;height:28px;border-radius:8px;background:var(--accent);display:inline-block;position:relative}
+.brand i::after{content:"";position:absolute;inset:8px 7px 9px 7px;border:2px solid var(--accent-ink);border-radius:5px 5px 5px 1px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:12px 18px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.num{font-variant-numeric:tabular-nums;font-weight:800}
+/* phone demo */
+.phone{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:18px 14px;display:flex;flex-direction:column;gap:8px;max-width:340px;width:100%;justify-self:center;box-shadow:0 18px 40px -24px rgba(0,0,0,.35)}
+.phone-top{text-align:center;font-size:.78rem;color:var(--muted);padding-bottom:6px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.b{max-width:86%;padding:9px 12px;border-radius:16px;font-size:.86rem;line-height:1.45}
+.b.in{background:var(--bubble-in);align-self:flex-start;border-bottom-left-radius:4px}
+.b.out{background:var(--bubble-out);color:var(--bubble-out-ink);align-self:flex-end;border-bottom-right-radius:4px;font-weight:700}
+.stars{color:var(--star);letter-spacing:1px}
+.hold{color:var(--hold);font-weight:700}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.step{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:2px solid var(--fg)}
+.step .n{font-family:var(--font-display);font-weight:800;font-size:1.4rem;color:var(--accent)}
+/* offer */
+.offer{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+.offer-copy{display:flex;flex-direction:column;gap:14px;min-width:0}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price b{font-family:var(--font-display);font-size:3rem;line-height:1}
+.price s{color:var(--muted)}
+ul.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+ul.ticks li{padding-left:24px;position:relative}
+ul.ticks li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;height:7px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+.join{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.qr{width:168px;height:168px;background:#fff;border-radius:12px;padding:8px;border:1px solid var(--line);image-rendering:pixelated}
+.phone-num{font-size:1.35rem}
+.copy-note{font-size:.8rem;color:var(--muted);min-height:1.2em}
+/* faq */
+.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px}
+.faq div{display:flex;flex-direction:column;gap:6px}
+footer a{color:inherit}
+.legal{display:flex;flex-direction:column;gap:10px;font-size:.85rem;color:var(--muted)}
+.legal h3{color:var(--fg)}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media (max-width:760px){
+  .hero,.offer{grid-template-columns:1fr}
+  .steps,.faq{grid-template-columns:1fr}
+  .wrap{gap:44px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><i aria-hidden="true"></i>Divoit</div>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Google review replies for local businesses</span>
+      <h1>Every review answered in your voice. You approve by text.</h1>
+      <p class="muted">When a new Google review comes in, you get a text with a reply written the way you'd write it. Reply POST and it goes live. Tough reviews come to you first and never post on their own.</p>
+      <div class="cta-row">
+        <a class="btn" href="sms:+16124930409?&body=START" id="smsBtn">Text START to join</a>
+        <span class="muted">No app. No logins. Cancel anytime.</span>
+      </div>
+    </div>
+    <div class="phone" aria-label="Example text conversation">
+      <div class="phone-top">Divoit · (612) 493-0409</div>
+      <div class="b in">Review #1 <span class="stars">★★★★★</span> Sara M.: "Best shawarma in Saint Paul, and so friendly!"<br><br>Draft: "Thank you so much, Sara's kind words made our day! See you again soon."</div>
+      <div class="b in"><span class="hold">⚠️ HOLD #2</span> ★★ "Waited 40 minutes."<br>Suggested: a calm apology, no promises. Next step: call the guest.</div>
+      <div class="b out">POST 1</div>
+      <div class="b in">Posted ✅ #1. #2 is waiting on you.</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="howH" style="display:flex;flex-direction:column;gap:22px">
+    <h2 id="howH">How it works</h2>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Text START</h3><p class="muted">We ask a few questions by text: your business, Google listing, and when to start. Then you pay securely through Stripe.</p></div>
+      <div class="step"><span class="n">2</span><h3>We learn your voice</h3><p class="muted">We read your past replies to match how you talk. New to replying? Pick a style and approve a sample.</p></div>
+      <div class="step"><span class="n">3</span><h3>Approve by text</h3><p class="muted">Each morning you get drafts for new reviews. Reply POST, EDIT with your own words, or SKIP. It learns from every edit.</p></div>
+    </div>
+  </section>
+
+  <section class="offer" id="join" aria-labelledby="offerH">
+    <div class="offer-copy">
+      <span class="eyebrow">Founding clients · 10 spots</span>
+      <h2 id="offerH">Founding price, locked for 12 months</h2>
+      <div class="price"><b class="num">$49</b><span>/month</span><s>$99/month</s></div>
+      <ul class="ticks">
+        <li>Replies to every new Google review, drafted in your voice</li>
+        <li>Approve, edit or skip by text, nothing posts without your OK</li>
+        <li>Risky reviews flagged with a suggested next step</li>
+        <li>$149 setup fee waived</li>
+        <li>Month to month, cancel anytime</li>
+      </ul>
+    </div>
+    <div class="join">
+      <img class="qr" alt="QR code that opens a text to (612) 493-0409 with START" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGAQAAAACh4MLwAAABC0lEQVR42u2YwQ3DMAwDhXoAj+TVPVIGMKCSlJNfni34sFAYSfU5yKKoNvIlVpzMyfwkE4zRckafefGlIfOJt/hXhmwgyWvgs/CKB33jwnZFA1ivug3V0I0N1QtPtkJqbmzqN1DtxnPqt63TwjPT6Q41W3umiwfb0gN0ihGXOZvTnYJKSLMmsCBt+q2jdJwhOB9R+Nwp6iY8ehYHndN8AxKbTc5lpYVqs5RtaYYMo7pJBSGd0iOsvF7bUU3dkoYVGy2eEpg0BSedVtzzLa08q/y0rpJ7iNPsrfWDeLGF4Li/8Qxuv2ZsXH3jPv3qVmbq9Vum9t4sr4/oVp5Fna5a4cRmt/eefxZO5ueZL9VfGvAARWhqAAAAAElFTkSuQmCC">
+      <span class="muted">Scan, or text <b>START</b> to</span>
+      <span class="phone-num num" id="num">(612) 493-0409</span>
+      <button class="btn ghost" type="button" id="copyBtn">Copy number</button>
+      <span class="copy-note" id="copyNote" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <section aria-labelledby="faqH" style="display:flex;flex-direction:column;gap:22px">
+    <h2 id="faqH">Questions owners ask</h2>
+    <div class="faq">
+      <div><h3>Will anything post without me?</h3><p class="muted">Never. Every reply waits for your POST or EDIT. Reviews about refunds, safety, staff or anything legal are held and flagged for you.</p></div>
+      <div><h3>What access do you need?</h3><p class="muted">Manager access to your Google Business Profile so replies can be posted for you. We text you the steps, or call and we'll do it together. You can remove it anytime.</p></div>
+      <div><h3>How does it sound like me?</h3><p class="muted">We study your past replies on Google. When you edit a draft, we ask whether to make that change a habit, so drafts need fewer edits over time.</p></div>
+      <div><h3>Do I need an app or a login?</h3><p class="muted">No. Everything happens in your regular text messages, on any phone.</p></div>
+      <div><h3>How do I pay or cancel?</h3><p class="muted">Payment is through Stripe. It's month to month: text us or reply CANCEL and we'll stop at the end of your month.</p></div>
+      <div><h3>Who is behind this?</h3><p class="muted">Divoit is run by Faiz Khan, a Saint Paul restaurant owner who built it for his own reviews first.</p></div>
+    </div>
+  </section>
+
+  <section class="legal" id="privacy" aria-labelledby="privH">
+    <h3 id="privH">Privacy and text messages</h3>
+    <p>By texting START to (612) 493-0409 you agree to receive texts from Divoit about your account and your Google reviews. Message frequency varies, usually one to a few texts a day. Message and data rates may apply. Reply STOP to opt out or HELP for help. We use your phone number and business details only to run the service. We never sell or share them for marketing, and mobile opt-in data is never shared with third parties. Payments are handled by Stripe; we never see your card number.</p>
+  </section>
+
+  <footer><span>© 2026 Divoit LLC · Saint Paul, MN</span><span><a href="mailto:support@divoit.com">support@divoit.com</a> · <a href="#privacy">Privacy &amp; SMS terms</a></span></footer>
+</div>
+
+<script>
+document.getElementById("copyBtn").addEventListener("click", async () => {
+  const note = document.getElementById("copyNote");
+  try { await navigator.clipboard.writeText("+16124930409"); note.textContent = "Number copied. Text START to it."; }
+  catch (e) {
+    const r = document.createRange(); r.selectNodeContents(document.getElementById("num"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    note.textContent = "Number selected. Copy it, then text START.";
+  }
+});
+</script>
+</body>
+</html>
