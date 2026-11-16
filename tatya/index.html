@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tatya by Divoit · Social posts from your photos, approved by text</title>
+<meta name="description" content="Tatya, the second Divoit helper, turns the photos you text into finished posts for Instagram, Facebook, Google and TikTok. Nothing goes out without your OK. Founding price $99/month.">
+<meta property="og:title" content="Tatya by Divoit · Social posts from your photos, approved by text">
+<meta property="og:description" content="Tatya, the second Divoit helper, turns the photos you text into finished posts for Instagram, Facebook, Google and TikTok. Nothing goes out without your OK. Founding price $99/month.">
+<meta property="og:url" content="https://divoit.com/tatya/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://divoit.com/tatya/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%231f5a47'/%3E%3Cpath d='M16 5l2.6 8.4L27 16l-8.4 2.6L16 27l-2.6-8.4L5 16l8.4-2.6z' fill='%23efe4c6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#f4efe3; --surface:#fbf8f0; --line:#ddd3bd; --fg:#1f231f; --muted:#5d625a;
+  --accent:#1f5a47; --accent-ink:#fbf8f0; --gold:#9a7a2e; --gold-soft:#efe4c6;
+  --bubble-in:#ebe4d3; --bubble-out:#1f5a47; --bubble-out-ink:#ffffff; --star:#b8860b; --hold:#9c3f27;
+  --font-rune:"Cinzel", "Trajan Pro", Georgia, serif;
+  --font-display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-ui:"Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121614; --surface:#1a201c; --line:#2f3832; --fg:#ece6d6; --muted:#a7a596;
+  --accent:#6cc4a3; --accent-ink:#0f1512; --gold:#d6b765; --gold-soft:#2c2a1e;
+  --bubble-in:#252c27; --bubble-out:#2f7d63; --bubble-out-ink:#ffffff; --star:#e3b955; --hold:#ec8a6c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121614; --surface:#1a201c; --line:#2f3832; --fg:#ece6d6; --muted:#a7a596;
+  --accent:#6cc4a3; --accent-ink:#0f1512; --gold:#d6b765; --gold-soft:#2c2a1e;
+  --bubble-in:#252c27; --bubble-out:#2f7d63; --bubble-out-ink:#ffffff; --star:#e3b955; --hold:#ec8a6c; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-ui);font-size:16px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:24px 56px}
+.wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.3rem,5.4vw,3.6rem);line-height:1.04;letter-spacing:-0.01em}
+h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3.2vw,2.2rem);line-height:1.12}
+h3{font-size:1rem;font-weight:700}
+p{margin:0;max-width:62ch}
+a{color:inherit}
+.muted{color:var(--muted)}
+.eyebrow{font-family:var(--font-rune);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--gold)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-rune);font-weight:700;letter-spacing:.14em;text-decoration:none;font-size:1.05rem}
+.brand svg{width:30px;height:30px;flex:none}
+.nav{display:flex;gap:18px;font-size:.9rem}
+.nav a{text-decoration:none;color:var(--muted)}
+.nav a:hover{color:var(--fg)}
+.rule{display:flex;align-items:center;gap:14px;color:var(--gold)}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7}
+.rule span{font-size:.9rem;letter-spacing:.4em}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:12px 18px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.num{font-variant-numeric:tabular-nums;font-weight:800}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+/* phone demo */
+.phone{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:18px 14px;display:flex;flex-direction:column;gap:8px;max-width:340px;width:100%;justify-self:center;box-shadow:0 18px 40px -24px rgba(0,0,0,.35)}
+.phone-top{text-align:center;font-size:.78rem;color:var(--muted);padding-bottom:6px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.b{max-width:86%;padding:9px 12px;border-radius:16px;font-size:.86rem;line-height:1.45}
+.b.in{background:var(--bubble-in);align-self:flex-start;border-bottom-left-radius:4px}
+.b.out{background:var(--bubble-out);color:var(--bubble-out-ink);align-self:flex-end;border-bottom-right-radius:4px;font-weight:700}
+.stars{color:var(--star);letter-spacing:1px}
+.hold{color:var(--hold);font-weight:700}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.step{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid var(--gold)}
+.step .n{font-family:var(--font-rune);font-weight:600;font-size:1.5rem;color:var(--gold)}
+/* offer */
+.offer{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+.offer-copy{display:flex;flex-direction:column;gap:14px;min-width:0}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price b{font-family:var(--font-display);font-size:3.2rem;line-height:1}
+.price s{color:var(--muted)}
+ul.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+ul.ticks li{padding-left:24px;position:relative}
+ul.ticks li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;height:7px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+.join{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.qr-ph{width:168px;height:168px;border-radius:12px;border:1px dashed var(--line);display:grid;place-items:center;text-align:center;padding:14px;font-size:.85rem;color:var(--muted)}
+.thumb{border-radius:10px;height:120px;background:linear-gradient(135deg,var(--gold-soft),var(--bubble-in));display:grid;place-items:center;font-size:.8rem;color:var(--muted)}
+.qr{width:168px;height:168px;background:#fff;border-radius:12px;padding:8px;border:1px solid var(--line);image-rendering:pixelated}
+.phone-num{font-size:1.35rem}
+.copy-note{font-size:.8rem;color:var(--muted);min-height:1.2em}
+/* faq */
+.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px}
+.faq div{display:flex;flex-direction:column;gap:6px}
+.legal{display:flex;flex-direction:column;gap:10px;font-size:.85rem;color:var(--muted)}
+.legal h3{color:var(--fg)}
+@media (max-width:760px){
+  .hero,.offer{grid-template-columns:1fr}
+  .steps,.faq{grid-template-columns:1fr}
+  .wrap{gap:44px}
+}
+
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.pname{font-family:var(--font-rune);letter-spacing:.12em;font-weight:700;color:var(--gold)}
+@media (max-width:760px){.hero,.offer{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="var(--accent)"/><path d="M16 5l2.6 8.4L27 16l-8.4 2.6L16 27l-2.6-8.4L5 16l8.4-2.6z" fill="var(--gold-soft)"/></svg>DIVOIT</a>
+    <nav class="nav" aria-label="Main"><a href="/#helpers">All helpers</a><a href="#join">Join</a><a href="mailto:support@divoit.com">Contact</a></nav>
+  </div>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="pname">Tatya</span> · the second Divoit helper</span>
+      <h1>Text us your photos. Get finished posts back to approve.</h1>
+      <p class="muted">Snap a few photos or a short video and text them. Tatya turns them into posts for Instagram, Facebook, Google and TikTok in your style, texts you a preview, and schedules only what you approve. Works for any local business: restaurants, salons, trades, shops, clinics and more.</p>
+      <div class="cta-row">
+        <a class="btn" href="#join" data-sms-cta>Text START to join</a>
+        <span class="muted">No app. No logins. Cancel anytime.</span>
+      </div>
+    </div>
+    <div class="phone" aria-label="Example text conversation">
+      <div class="phone-top">Tatya by Divoit</div>
+      <div class="b out">[3 photos] New fall pie is out!</div>
+      <div class="b in">Got them 📸 I'll turn them into posts and text you previews soon.</div>
+      <div class="b in">Preview #1 · Instagram &amp; Facebook, Thu 6:30 PM<div class="thumb" style="margin:6px 0">photo preview</div>"Fresh out of the oven: our fall apple pie is back."</div>
+      <div class="b out">POST 1</div>
+      <div class="b in">Scheduled ✅ #1, Thu 6:30 PM.</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="howH" style="display:flex;flex-direction:column;gap:22px">
+    <h2 id="howH">How it works</h2>
+    <div class="steps">
+      <div class="step"><span class="n">I</span><h3>Text START</h3><p class="muted">We ask a few questions by text: your business, website and social handles, and when to start. Then you pay securely through Stripe.</p></div>
+      <div class="step"><span class="n">II</span><h3>We learn your style</h3><p class="muted">We study your past posts, website and Google profile, then text you what we learned, your first post ideas and the photos that would help.</p></div>
+      <div class="step"><span class="n">III</span><h3>Approve by text</h3><p class="muted">Send photos anytime. You get previews to POST, EDIT or SKIP. Tatya learns from every edit and asks before making a change a habit.</p></div>
+    </div>
+  </section>
+
+  <section class="offer" id="join" aria-labelledby="offerH">
+    <div class="offer-copy">
+      <span class="eyebrow">Tatya founding clients · 10 spots</span>
+      <h2 id="offerH">Founding price, locked for 12 months</h2>
+      <div class="price"><b class="num">$99</b><span>/month</span><s>$199/month</s></div>
+      <ul class="ticks">
+        <li>About 3 finished posts a week from your own photos and videos</li>
+        <li>Instagram, Facebook, Google Business Profile and TikTok/Reels</li>
+        <li>Previews by text, nothing posts without your OK</li>
+        <li>Accounts connected through a secure link, no passwords shared</li>
+        <li>Month to month, cancel anytime</li>
+      </ul>
+    </div>
+    <div class="join" id="joinBox">
+      <div class="qr-ph" id="qrPh">Our Tatya text line opens this week.</div>
+      <span class="muted" id="joinLead">Want a founding spot now? Email</span>
+      <span class="phone-num num" id="num"><a href="mailto:support@divoit.com?subject=Tatya%20founding%20spot">support@divoit.com</a></span>
+      <span class="copy-note" id="copyNote" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <section aria-labelledby="faqH" style="display:flex;flex-direction:column;gap:22px">
+    <h2 id="faqH">Questions owners ask</h2>
+    <div class="faq">
+      <div><h3>Will anything post without me?</h3><p class="muted">Never. Every post waits for your POST or EDIT. Anything mentioning prices, offers, dates or people's faces is flagged and needs its own OK.</p></div>
+      <div><h3>What access do you need?</h3><p class="muted">You connect your accounts through a secure scheduling link (Metricool). We never ask for passwords, and you can disconnect anytime.</p></div>
+      <div><h3>Do you make up photos?</h3><p class="muted">No. We only use your real photos and videos, with light touch-ups like brightness and cropping. We never invent prices, deals or claims.</p></div>
+      <div><h3>What if I don't know what to post?</h3><p class="muted">Tatya texts you a short shot list each week, like "a close-up of today's special" or "a 10-second clip of the team at work".</p></div>
+      <div><h3>How do I pay or cancel?</h3><p class="muted">Payment is through Stripe. It's month to month: text END PLAN and we'll stop at the end of your month.</p></div>
+      <div><h3>Who is behind this?</h3><p class="muted">Divoit is run by Faiz Khan, a Saint Paul restaurant owner who built it for his own restaurant's social media first.</p></div>
+    </div>
+  </section>
+
+  <section class="legal" id="privacy" aria-labelledby="privH">
+    <h3 id="privH">Privacy and text messages</h3>
+    <p>By texting START to the Tatya number on this page you agree to receive texts from Divoit (Tatya) about your account and your social media posts, including post previews with images and links. Message frequency varies, usually a few texts a week and up to a few a day when previews are waiting. Message and data rates may apply. Reply STOP to opt out or HELP for help. Photos and videos you text us are used only to make your own posts. We use your phone number and business details only to run the service. We never sell or share them for marketing, and mobile opt-in data is never shared with third parties. Payments are handled by Stripe; we never see your card number.</p>
+  </section>
+
+  <footer><span>© 2026 Divoit LLC · Saint Paul, MN</span><span><a href="mailto:support@divoit.com">support@divoit.com</a> · <a href="#privacy">Privacy &amp; SMS terms</a></span></footer>
+</div>
+</body>
+</html>
