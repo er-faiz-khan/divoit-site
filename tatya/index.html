@@ -115,12 +115,12 @@ ul.ticks li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;h
       <h1>Text us your photos. Get finished posts back to approve.</h1>
       <p class="muted">Snap a few photos or a short video and text them. Tatya turns them into posts for Instagram, Facebook, Google and TikTok in your style, texts you a preview, and schedules only what you approve. Works for any local business: restaurants, salons, trades, shops, clinics and more.</p>
       <div class="cta-row">
-        <a class="btn" href="#join" data-sms-cta>Text START to join</a>
+        <a class="btn" href="sms:+17632300280?&amp;body=START">Text START to join</a>
         <span class="muted">No app. No logins. Cancel anytime.</span>
       </div>
     </div>
     <div class="phone" aria-label="Example text conversation">
-      <div class="phone-top">Tatya by Divoit</div>
+      <div class="phone-top">Tatya by Divoit · (763) 230-0280</div>
       <div class="b out">[3 photos] New fall pie is out!</div>
       <div class="b in">Got them 📸 I'll turn them into posts and text you previews soon.</div>
       <div class="b in">Preview #1 · Instagram &amp; Facebook, Thu 6:30 PM<div class="thumb" style="margin:6px 0">photo preview</div>"Fresh out of the oven: our fall apple pie is back."</div>
@@ -152,9 +152,10 @@ ul.ticks li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;h
       </ul>
     </div>
     <div class="join" id="joinBox">
-      <div class="qr-ph" id="qrPh">Our Tatya text line opens this week.</div>
-      <span class="muted" id="joinLead">Want a founding spot now? Email</span>
-      <span class="phone-num num" id="num"><a href="mailto:support@divoit.com?subject=Tatya%20founding%20spot">support@divoit.com</a></span>
+      <img class="qr" alt="QR code that opens a text to (763) 230-0280 with START" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKIAAACiAQAAAADqiSu2AAABZ0lEQVR4Xs1XwY3DMAyjqgB5KsAN0FGc1TLSbWCP0g3kZwEbOshJr48r+ot6fsVGgNCkSClk+LvK5cUhcNppJ1+oK9E6ofhmOe9rL+82QRQoQLG6MGBA/wrGcAEKLejXDCQAnehM1t9qXNd+3X7fOE3593WWZk335XgnHEMyBWTrC1jB5kaJxlCJaAXQUPoCIpqiMcDGakhmucm+y7E8oEkGMOQwtvH8AQzGmtjMFM3BJEg0D0OC3EY4mCZ/DsfQJLMZOwmJLZt6YQTXg6lT4b6Q/CjLaAzDEbY7ApJ3SLE8XCC5E803b5cAJrEe3TddgobUhjFZj7KM5WECwFb4RozkOSnf4Vn9zMnmnFgDwvPhmKNYCyvGMONBEauF3323pMeUuEHCM+qYo1BXyNYqTXWdNZiHB+uy8egUrOUe7c2n8p4PdW3yiRlmzFE+QWmZ1b3K0Vp4vx5DlLdviO2tM9YX9A/+s34AF1zP4SQmQHoAAAAASUVORK5CYII=">
+      <span class="muted">Scan, or text <b>START</b> to</span>
+      <span class="phone-num num" id="num">(763) 230-0280</span>
+      <button class="btn ghost" type="button" id="copyBtn">Copy number</button>
       <span class="copy-note" id="copyNote" aria-live="polite"></span>
     </div>
   </section>
@@ -173,10 +174,21 @@ ul.ticks li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;h
 
   <section class="legal" id="privacy" aria-labelledby="privH">
     <h3 id="privH">Privacy and text messages</h3>
-    <p>By texting START to the Tatya number on this page you agree to receive texts from Divoit (Tatya) about your account and your social media posts, including post previews with images and links. Message frequency varies, usually a few texts a week and up to a few a day when previews are waiting. Message and data rates may apply. Reply STOP to opt out or HELP for help. Photos and videos you text us are used only to make your own posts. We use your phone number and business details only to run the service. We never sell or share them for marketing, and mobile opt-in data is never shared with third parties. Payments are handled by Stripe; we never see your card number.</p>
+    <p>By texting START to (763) 230-0280 you agree to receive texts from Divoit (Tatya) about your account and your social media posts, including post previews with images and links. Message frequency varies, usually a few texts a week and up to a few a day when previews are waiting. Message and data rates may apply. Reply STOP to opt out or HELP for help. Photos and videos you text us are used only to make your own posts. We use your phone number and business details only to run the service. We never sell or share them for marketing, and mobile opt-in data is never shared with third parties. Payments are handled by Stripe; we never see your card number.</p>
   </section>
 
   <footer><span>© 2026 Divoit LLC · Saint Paul, MN</span><span><a href="mailto:support@divoit.com">support@divoit.com</a> · <a href="#privacy">Privacy &amp; SMS terms</a></span></footer>
 </div>
+<script>
+document.getElementById("copyBtn").addEventListener("click", async () => {
+  const note = document.getElementById("copyNote");
+  try { await navigator.clipboard.writeText("+17632300280"); note.textContent = "Number copied. Text START to it."; }
+  catch (e) {
+    const r = document.createRange(); r.selectNodeContents(document.getElementById("num"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    note.textContent = "Number selected. Copy it, then text START.";
+  }
+});
+</script>
 </body>
 </html>
