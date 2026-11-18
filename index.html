@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://divoit.com/">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://divoit.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%231f5a47'/%3E%3Cpath d='M16 5l2.6 8.4L27 16l-8.4 2.6L16 27l-2.6-8.4L5 16l8.4-2.6z' fill='%23efe4c6'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%231f5a47'/%3E%3Cpath d='M29.5,15.5 Q32.54,31.46 48.5,34.5 Q32.54,37.54 29.5,53.5 Q26.46,37.54 10.5,34.5 Q26.46,31.46 29.5,15.5 Z' fill='%23efe4c6'/%3E%3Cpath d='M46,11.0 Q47.3,16.2 52.5,17.5 Q47.3,18.8 46,24.0 Q44.7,18.8 39.5,17.5 Q44.7,16.2 46,11.0 Z' fill='%23e3b955'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
@@ -45,7 +45,7 @@ a{color:inherit}
 .eyebrow{font-family:var(--font-rune);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--gold)}
 .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-rune);font-weight:700;letter-spacing:.14em;text-decoration:none;font-size:1.05rem}
-.brand svg{width:30px;height:30px;flex:none}
+.brand svg{width:30px;height:30px;flex:none}.brand span svg{width:9px;height:9px;display:inline-block;vertical-align:.12em}
 .nav{display:flex;gap:18px;font-size:.9rem}
 .nav a{text-decoration:none;color:var(--muted)}
 .nav a:hover{color:var(--fg)}
@@ -81,7 +81,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:
 <body>
 <div class="wrap">
   <div class="top">
-    <a class="brand" href="/"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="var(--accent)"/><path d="M16 5l2.6 8.4L27 16l-8.4 2.6L16 27l-2.6-8.4L5 16l8.4-2.6z" fill="var(--gold-soft)"/></svg>DIVOIT</a>
+    <a class="brand" href="/" aria-label="Divoit AI"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="var(--accent)"/><path d="M29.5,15.5 Q32.54,31.46 48.5,34.5 Q32.54,37.54 29.5,53.5 Q26.46,37.54 10.5,34.5 Q26.46,31.46 29.5,15.5 Z" fill="var(--gold-soft)"/><path d="M46,11.0 Q47.3,16.2 52.5,17.5 Q47.3,18.8 46,24.0 Q44.7,18.8 39.5,17.5 Q44.7,16.2 46,11.0 Z" fill="var(--star)"/></svg><span>DIVOIT<svg viewBox="0 0 12 12" aria-hidden="true" style="margin:0 .35em 0 .45em"><path d="M6,0.5 Q7.1,4.9 11.5,6 Q7.1,7.1 6,11.5 Q4.9,7.1 0.5,6 Q4.9,4.9 6,0.5 Z" fill="var(--gold)"/></svg><span style="color:var(--gold);font-weight:600">AI</span></span></a>
     <nav class="nav" aria-label="Main"><a href="#helpers">Helpers</a><a href="/minya/">Minya</a><a href="/tatya/">Tatya</a><a href="mailto:support@divoit.com">Contact</a></nav>
   </div>
 
