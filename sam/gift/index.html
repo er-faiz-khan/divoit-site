@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A gift for you · Sam by Divoit</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Someone gave you Sam, a friendly companion you can text anytime.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='33' cy='31' r='29' fill='%231f5a47'/%3E%3Cpath d='M12,46 Q9,57 3,61 Q15,60 22,54 Z' fill='%231f5a47'/%3E%3Ccircle cx='28.5' cy='37' r='12' fill='%23efe4c6'/%3E%3Crect x='34.6' y='13' width='6.4' height='36' rx='3.2' fill='%23efe4c6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#f4efe3;--surface:#fbf8f0;--line:#ddd3bd;--fg:#1f231f;--muted:#5d625a;--accent:#1f5a47;--gold:#9a7a2e;--gold-soft:#efe4c6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Manrope,system-ui,sans-serif;font-size:19px;line-height:1.55;display:flex;justify-content:center;padding:28px 16px}
+.card{max-width:560px;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:34px 30px;text-align:center;box-shadow:0 10px 30px rgba(31,35,31,.08)}
+.brand{font-family:Cinzel,serif;letter-spacing:.14em;font-size:14px;color:var(--accent)}
+.brand b{color:var(--gold)}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:42px;line-height:1.1;margin:16px 0 8px}
+p{margin:8px 0;color:var(--muted)}
+.code{font-size:44px;font-weight:700;letter-spacing:.06em;color:var(--accent);background:var(--gold-soft);border-radius:14px;padding:10px 18px;display:inline-block;margin:14px 0 6px}
+.num{font-weight:700;color:var(--fg)}
+.btn{display:block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:21px;padding:18px;border-radius:14px;margin:18px 0 8px}
+#qr{width:200px;height:200px;margin:14px auto 4px}
+#qr svg{width:100%;height:100%}
+.steps{text-align:left;margin:20px 0 4px;padding-left:24px;color:var(--fg)}
+.steps li{margin:6px 0}
+.small{font-size:14px}
+.bad{color:#9c3f27}
+@media print{body{background:#fff;padding:0}.card{box-shadow:none;border:2px solid var(--line)}.btn,.noprint{display:none}}
+</style>
+</head>
+<body>
+<main class="card" id="card">
+  <div class="brand">DIVOIT <b>✦</b> SAM</div>
+  <h1 id="title">A gift for you</h1>
+  <p id="from">Someone who cares about you gave you Sam, a friendly companion you can text anytime.</p>
+  <div id="have">
+    <p style="margin-top:16px">To start, text this code</p>
+    <div class="code" id="code"></div>
+    <p>to <span class="num">(763) 333-9041</span></p>
+    <a class="btn" id="sms" href="#">Tap here to text it now</a>
+    <div id="qr" aria-label="QR code that opens a text with your code"></div>
+    <p class="small" id="qrnote">Or point your phone's camera at this square.</p>
+    <ol class="steps">
+      <li>Send the code from your own cell phone.</li>
+      <li>Sam will say hello and ask a few easy questions.</li>
+      <li>Then just chat, anytime. No app, nothing to download.</li>
+    </ol>
+  </div>
+  <p id="none" class="bad" hidden>This gift link is missing its code. Please ask the person who gave it to you to send it again.</p>
+  <p class="small" style="margin-top:18px">Sam is an AI companion from Divoit, not an emergency service. Msg &amp; data rates may apply. Reply STOP anytime to stop texts. <a href="/sam/#privacy">Privacy &amp; SMS terms</a></p>
+  <p class="small noprint"><a href="#" onclick="window.print();return false">Print this card</a></p>
+</main>
+<script src="qrcode.js"></script>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  var c=(q.get("c")||"").toUpperCase().trim();
+  var n=(q.get("n")||"").replace(/[^\p{L} '\-]/gu,"").slice(0,30).trim();
+  var f=(q.get("f")||"").replace(/[^\p{L} '\-]/gu,"").slice(0,40).trim();
+  if(!/^SAM-\d{4}$/.test(c)){document.getElementById("have").hidden=true;document.getElementById("none").hidden=false;return;}
+  if(n) document.getElementById("title").textContent="A gift for you, "+n;
+  if(f) document.getElementById("from").textContent=f+" gave you Sam, a friendly companion you can text anytime.";
+  document.getElementById("code").textContent=c;
+  var ios=/iPhone|iPad|iPod/.test(navigator.userAgent);
+  document.getElementById("sms").href="sms:+17633339041"+(ios?"&":"?")+"body="+encodeURIComponent(c);
+  try{var qr=qrcode(0,"M");qr.addData("SMSTO:+17633339041:"+c);qr.make();document.getElementById("qr").innerHTML=qr.createSvgTag({scalable:true,margin:2});}catch(e){document.getElementById("qr").hidden=true;document.getElementById("qrnote").hidden=true;}
+})();
+</script>
+</body>
+</html>
