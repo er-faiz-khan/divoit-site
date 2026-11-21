@@ -71,6 +71,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:
 .gloss{font-family:var(--font-rune);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .tag{align-self:flex-start;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
 .tag.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.price-line{margin:0;font-size:.95rem}.price-line s{color:var(--muted)}
 .card .more{margin-top:auto;font-weight:700;color:var(--accent)}
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .pillar{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid var(--gold)}
@@ -82,7 +83,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:
 <div class="wrap">
   <div class="top">
     <a class="brand" href="/" aria-label="Divoit AI"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="33" cy="31" r="29" fill="var(--accent)"/><path d="M12,46 Q9,57 3,61 Q15,60 22,54 Z" fill="var(--accent)"/><circle cx="28.5" cy="37" r="12" fill="var(--gold-soft)"/><rect x="34.6" y="13" width="6.4" height="36" rx="3.2" fill="var(--gold-soft)"/><path d="M28.5,29.3 Q29.809,35.691 36.2,37 Q29.809,38.309 28.5,44.7 Q27.191,38.309 20.8,37 Q27.191,35.691 28.5,29.3 Z" fill="var(--accent)"/><path d="M48,12.2 Q48.96,16.04 52.8,17 Q48.96,17.96 48,21.8 Q47.04,17.96 43.2,17 Q47.04,16.04 48,12.2 Z" fill="var(--star)"/></svg><span>DIVOIT<svg viewBox="0 0 12 12" aria-hidden="true" style="margin:0 .35em 0 .45em"><path d="M6,0.5 Q7.1,4.9 11.5,6 Q7.1,7.1 6,11.5 Q4.9,7.1 0.5,6 Q4.9,4.9 6,0.5 Z" fill="var(--gold)"/></svg><span style="color:var(--gold);font-weight:600">AI</span></span></a>
-    <nav class="nav" aria-label="Main"><a href="#helpers">Helpers</a><a href="/minya/">Minya</a><a href="/tatya/">Tatya</a><a href="/sam/">Sam</a><a href="mailto:support@divoit.com">Contact</a></nav>
+    <nav class="nav" aria-label="Main"><a href="#helpers">Helpers</a><a href="/minya/">Minya</a><a href="/tatya/">Tatya</a><a href="/nelya/">Nelya</a><a href="/sam/">Sam</a><a href="mailto:support@divoit.com">Contact</a></nav>
   </div>
 
   <section class="hero">
@@ -103,26 +104,34 @@ footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:
       <a class="card live" href="/minya/">
         <span class="ord">I</span>
         <span class="pname">Minya</span>
-        <span class="gloss">The First</span>
+        <span class="gloss">by Divoit AI</span>
+        <h3>Fully automated review response system</h3>
         <span class="tag on">Live · founding spots open</span>
-        <p class="muted">Answers every Google review in your voice. You approve each reply by text.</p>
+        <p class="price-line"><b class="num">$24.99</b>/month founding · <s>$29.99</s></p>
+        <p class="muted">Answers every Google review in your voice. You approve each reply by text. Free with Tatya or Nelya.</p>
         <span class="more">See how it works →</span>
       </a>
       <a class="card live" href="/tatya/">
         <span class="ord">II</span>
         <span class="pname">Tatya</span>
-        <span class="gloss">The Second</span>
-        <span class="tag on">Founding spots open</span>
-        <p class="muted">Plans and makes your social posts. Send photos by text, approve the posts by text.</p>
+        <span class="gloss">by Divoit AI</span>
+        <h3>Fully hands-off automated marketing system</h3>
+        <span class="tag on">Live · founding spots open</span>
+        <p class="price-line"><b class="num">$149</b>/month founding · <s>$199</s></p>
+        <p class="muted">Turns the photos you text into finished posts for Instagram, Facebook, Google and TikTok. Minya included.</p>
         <span class="more">See how it works →</span>
       </a>
-      <div class="card">
+      <a class="card live" href="/nelya/">
         <span class="ord">III</span>
         <span class="pname">Nelya</span>
-        <span class="gloss">The Third</span>
-        <span class="tag">Coming later</span>
-        <p class="muted">Follows up with new leads and inquiries fast, so nobody waits on you.</p>
-      </div>
+        <span class="gloss">by Divoit AI</span>
+        <h3>Fully automated missed call management system</h3>
+        <span class="tag on">Live · founding spots open</span>
+        <p class="price-line"><b class="num">$199</b>/month founding · <s>$299</s></p>
+        <p class="muted">Texts back every caller you miss, collects the job details and sends you the lead. Minya included.</p>
+        <span class="more">See how it works →</span>
+      </a>
+    </div>
     </div>
   </section>
 

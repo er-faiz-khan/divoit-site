@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nelya by Divoit AI · Fully automated missed call management</title>
+<meta name="description" content="Nelya by Divoit AI texts back every caller you miss within seconds, collects the job details and texts you the lead. Reply from your phone. Founding price $199/month, Minya review replies included.">
+<meta property="og:title" content="Nelya by Divoit AI · Fully automated missed call management">
+<meta property="og:description" content="Nelya by Divoit AI texts back every caller you miss within seconds, collects the job details and texts you the lead. Reply from your phone. Founding price $199/month, Minya review replies included.">
+<meta property="og:url" content="https://divoit.com/nelya/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://divoit.com/nelya/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='33' cy='31' r='29' fill='%231f5a47'/%3E%3Cpath d='M12,46 Q9,57 3,61 Q15,60 22,54 Z' fill='%231f5a47'/%3E%3Ccircle cx='28.5' cy='37' r='12' fill='%23efe4c6'/%3E%3Crect x='34.6' y='13' width='6.4' height='36' rx='3.2' fill='%23efe4c6'/%3E%3Cpath d='M28.5,29.3 Q29.809,35.691 36.2,37 Q29.809,38.309 28.5,44.7 Q27.191,38.309 20.8,37 Q27.191,35.691 28.5,29.3 Z' fill='%231f5a47'/%3E%3Cpath d='M48,12.2 Q48.96,16.04 52.8,17 Q48.96,17.96 48,21.8 Q47.04,17.96 43.2,17 Q47.04,16.04 48,12.2 Z' fill='%23e3b955'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#f4efe3; --surface:#fbf8f0; --line:#ddd3bd; --fg:#1f231f; --muted:#5d625a;
+  --accent:#1f5a47; --accent-ink:#fbf8f0; --gold:#9a7a2e; --gold-soft:#efe4c6;
+  --bubble-in:#ebe4d3; --bubble-out:#1f5a47; --bubble-out-ink:#ffffff; --star:#b8860b; --hold:#9c3f27;
+  --font-rune:"Cinzel", "Trajan Pro", Georgia, serif;
+  --font-display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-ui:"Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121614; --surface:#1a201c; --line:#2f3832; --fg:#ece6d6; --muted:#a7a596;
+  --accent:#6cc4a3; --accent-ink:#0f1512; --gold:#d6b765; --gold-soft:#2c2a1e;
+  --bubble-in:#252c27; --bubble-out:#2f7d63; --bubble-out-ink:#ffffff; --star:#e3b955; --hold:#ec8a6c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121614; --surface:#1a201c; --line:#2f3832; --fg:#ece6d6; --muted:#a7a596;
+  --accent:#6cc4a3; --accent-ink:#0f1512; --gold:#d6b765; --gold-soft:#2c2a1e;
+  --bubble-in:#252c27; --bubble-out:#2f7d63; --bubble-out-ink:#ffffff; --star:#e3b955; --hold:#ec8a6c; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-ui);font-size:16px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:24px 56px}
+.wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.3rem,5.4vw,3.6rem);line-height:1.04;letter-spacing:-0.01em}
+h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3.2vw,2.2rem);line-height:1.12}
+h3{font-size:1rem;font-weight:700}
+p{margin:0;max-width:62ch}
+a{color:inherit}
+.muted{color:var(--muted)}
+.eyebrow{font-family:var(--font-rune);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--gold)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-rune);font-weight:700;letter-spacing:.14em;text-decoration:none;font-size:1.05rem}
+.brand svg{width:30px;height:30px;flex:none}.brand span svg{width:9px;height:9px;display:inline-block;vertical-align:.12em}
+.nav{display:flex;gap:18px;font-size:.9rem}
+.nav a{text-decoration:none;color:var(--muted)}
+.nav a:hover{color:var(--fg)}
+.rule{display:flex;align-items:center;gap:14px;color:var(--gold)}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7}
+.rule span{font-size:.9rem;letter-spacing:.4em}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:12px 18px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.num{font-variant-numeric:tabular-nums;font-weight:800}
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+/* phone demo */
+.phone{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:18px 14px;display:flex;flex-direction:column;gap:8px;max-width:340px;width:100%;justify-self:center;box-shadow:0 18px 40px -24px rgba(0,0,0,.35)}
+.phone-top{text-align:center;font-size:.78rem;color:var(--muted);padding-bottom:6px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.b{max-width:86%;padding:9px 12px;border-radius:16px;font-size:.86rem;line-height:1.45}
+.b.in{background:var(--bubble-in);align-self:flex-start;border-bottom-left-radius:4px}
+.b.out{background:var(--bubble-out);color:var(--bubble-out-ink);align-self:flex-end;border-bottom-right-radius:4px;font-weight:700}
+.stars{color:var(--star);letter-spacing:1px}
+.hold{color:var(--hold);font-weight:700}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.step{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid var(--gold)}
+.step .n{font-family:var(--font-rune);font-weight:600;font-size:1.5rem;color:var(--gold)}
+/* offer */
+.offer{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+.offer-copy{display:flex;flex-direction:column;gap:14px;min-width:0}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price b{font-family:var(--font-display);font-size:3.2rem;line-height:1}
+.price s{color:var(--muted)}
+ul.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+ul.ticks li{padding-left:24px;position:relative}
+ul.ticks li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;height:7px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+.join{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.qr-ph{width:168px;height:168px;border-radius:12px;border:1px dashed var(--line);display:grid;place-items:center;text-align:center;padding:14px;font-size:.85rem;color:var(--muted)}
+.thumb{border-radius:10px;height:120px;background:linear-gradient(135deg,var(--gold-soft),var(--bubble-in));display:grid;place-items:center;font-size:.8rem;color:var(--muted)}
+.qr{width:168px;height:168px;background:#fff;border-radius:12px;padding:8px;border:1px solid var(--line);image-rendering:pixelated}
+.phone-num{font-size:1.35rem}
+.copy-note{font-size:.8rem;color:var(--muted);min-height:1.2em}
+/* faq */
+.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px}
+.faq div{display:flex;flex-direction:column;gap:6px}
+.legal{display:flex;flex-direction:column;gap:10px;font-size:.85rem;color:var(--muted)}
+.legal h3{color:var(--fg)}
+@media (max-width:760px){
+  .hero,.offer{grid-template-columns:1fr}
+  .steps,.faq{grid-template-columns:1fr}
+  .wrap{gap:44px}
+}
+
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.pname{font-family:var(--font-rune);letter-spacing:.12em;font-weight:700;color:var(--gold)}
+@media (max-width:760px){.hero,.offer{grid-template-columns:1fr}}
+</style>
+</head>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/" aria-label="Divoit AI"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="33" cy="31" r="29" fill="var(--accent)"/><path d="M12,46 Q9,57 3,61 Q15,60 22,54 Z" fill="var(--accent)"/><circle cx="28.5" cy="37" r="12" fill="var(--gold-soft)"/><rect x="34.6" y="13" width="6.4" height="36" rx="3.2" fill="var(--gold-soft)"/><path d="M28.5,29.3 Q29.809,35.691 36.2,37 Q29.809,38.309 28.5,44.7 Q27.191,38.309 20.8,37 Q27.191,35.691 28.5,29.3 Z" fill="var(--accent)"/><path d="M48,12.2 Q48.96,16.04 52.8,17 Q48.96,17.96 48,21.8 Q47.04,17.96 43.2,17 Q47.04,16.04 48,12.2 Z" fill="var(--star)"/></svg><span>DIVOIT<svg viewBox="0 0 12 12" aria-hidden="true" style="margin:0 .35em 0 .45em"><path d="M6,0.5 Q7.1,4.9 11.5,6 Q7.1,7.1 6,11.5 Q4.9,7.1 0.5,6 Q4.9,4.9 6,0.5 Z" fill="var(--gold)"/></svg><span style="color:var(--gold);font-weight:600">AI</span></span></a>
+    <nav class="nav" aria-label="Main"><a href="/#helpers">All helpers</a><a href="#join">Join</a><a href="mailto:support@divoit.com">Contact</a></nav>
+  </div>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="pname">Nelya</span> by Divoit AI · Fully automated missed call management system</span>
+      <h1>Fully automated missed call management.</h1>
+      <p class="muted">You're on a ladder or under a sink when the phone rings. Nelya texts the caller back within seconds, asks what they need, and texts you the lead with their details and voicemail. Reply from your phone and Nelya passes it on. Built for contractors, remodelers, HVAC, plumbing, electrical and other service businesses.</p>
+      <div class="cta-row">
+        <a class="btn" href="sms:+16124714638?&amp;body=NELYA">Text NELYA to get started</a>
+        <span class="muted">No app. Keep your number. Cancel anytime.</span>
+      </div>
+    </div>
+    <div class="phone" aria-label="Example text conversation">
+      <div class="phone-top">Missed call · Nelya by Divoit AI</div>
+      <div class="b in">Hi, this is Northside Remodeling. Sorry we missed your call! We're on a job right now. What can we help you with?</div>
+      <div class="b out">Kitchen cabinets and counters, Maple Grove</div>
+      <div class="b in">Thanks! The owner will get back to you shortly.</div>
+      <div class="b in" style="margin-top:10px">New lead #1: kitchen cabinets and counters, Maple Grove. Reply REPLY 1: your message, or DONE 1.</div>
+      <div class="b out">REPLY 1: On a job site, will call you within the hour</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="howH" style="display:flex;flex-direction:column;gap:22px">
+    <h2 id="howH">How it works</h2>
+    <div class="steps">
+      <div class="step"><span class="n">I</span><h3>Calls ring you first</h3><p class="muted">Your business line forwards to a local Nelya number. It rings your phone like normal, so you answer when you can.</p></div>
+      <div class="step"><span class="n">II</span><h3>Missed? Nelya texts back</h3><p class="muted">If you can't pick up, the caller gets a friendly text from your business within seconds, and their voicemail is turned into text.</p></div>
+      <div class="step"><span class="n">III</span><h3>You get the lead</h3><p class="muted">Nelya texts you who called and what they need. Reply from your phone and it goes to the customer. Leads that go quiet get a gentle reminder.</p></div>
+    </div>
+  </section>
+
+  <section class="offer" id="join" aria-labelledby="offerH">
+    <div class="offer-copy">
+      <span class="eyebrow">Nelya founding clients · 10 spots</span>
+      <h2 id="offerH">Founding price, kept for as long as you stay</h2>
+      <div class="price"><b class="num">$199</b><span>/month</span><s>$299/month</s></div>
+      <ul class="ticks">
+        <li>Every missed call texted back within seconds, day or night</li>
+        <li>Voicemails turned into text and sent to you with the lead</li>
+        <li>Reply to customers from your own phone, by text</li>
+        <li>A local number in your area code, set up for you</li>
+        <li>Minya Google review replies included at no extra cost</li>
+        <li>No setup fee, month to month, cancel anytime</li>
+      </ul>
+    </div>
+    <div class="join" id="joinBox">
+      <span class="muted">Text <b>NELYA</b> or call</span>
+      <span class="phone-num num" id="num">(612) 471-4638</span>
+      <button class="btn ghost" type="button" id="copyBtn">Copy number</button>
+      <span class="copy-note" id="copyNote" aria-live="polite"></span>
+      <span class="muted">or email <a href="mailto:support@divoit.com">support@divoit.com</a></span>
+    </div>
+  </section>
+
+  <section aria-labelledby="faqH" style="display:flex;flex-direction:column;gap:22px">
+    <h2 id="faqH">Questions owners ask</h2>
+    <div class="faq">
+      <div><h3>Do I have to change my number?</h3><p class="muted">No. Your customers keep calling the number they know. Calls forward to your Nelya number, which rings you first.</p></div>
+      <div><h3>What does the caller see?</h3><p class="muted">A short, friendly text in your business's name. You choose the wording during setup.</p></div>
+      <div><h3>Will it text people at night?</h3><p class="muted">You decide. Nelya can text callers right away, and it holds your own lead alerts during your quiet hours unless something is urgent.</p></div>
+      <div><h3>What about spam calls?</h3><p class="muted">Reply SPAM to any lead and that number is blocked from future texts.</p></div>
+      <div><h3>How do I pay or cancel?</h3><p class="muted">Payment is through Stripe. It's month to month, with no refunds for partial months: cancel anytime and service runs to the end of your billing month.</p></div>
+      <div><h3>Who is behind this?</h3><p class="muted">Divoit AI is a Saint Paul company run by Faiz Khan, a local business owner who builds every helper for his own businesses first.</p></div>
+    </div>
+  </section>
+
+  <section class="legal" id="privacy" aria-labelledby="privH">
+    <h3 id="privH">Privacy and text messages</h3>
+    <p>When someone calls a business that uses Nelya and the call is missed, Nelya may send that caller texts about their call on the business's behalf. Callers can reply STOP at any time to stop texts, or HELP for help. Message and data rates may apply. Business owners receive lead alerts and can reply by text. Call details, voicemails and messages are used only to deliver the service to that business, are never sold, and are deleted 90 days after a lead closes. Questions: support@divoit.com.</p>
+  </section>
+
+  <footer><span>© 2026 Divoit LLC · Saint Paul, MN</span><span><a href="mailto:support@divoit.com">support@divoit.com</a> · <a href="#privacy">Privacy &amp; SMS terms</a></span></footer>
+</div>
+<script>
+document.getElementById("copyBtn").addEventListener("click", async () => {
+  const note = document.getElementById("copyNote");
+  try { await navigator.clipboard.writeText("+16124714638"); note.textContent = "Number copied. Text NELYA to it."; }
+  catch (e) {
+    const r = document.createRange(); r.selectNodeContents(document.getElementById("num"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    note.textContent = "Number selected. Copy it, then text NELYA.";
+  }
+});
+</script>
+</body>
+</html>
