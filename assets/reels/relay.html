@@ -1,7 +1,7 @@
 <!doctype html><meta charset="utf-8"><title>relay</title><p id="s">loading</p>
 <script>
-(async()=>{const q=new URLSearchParams(location.search);const names=(q.get('f')||'').split(',').filter(Boolean);
+(async()=>{const q=new URLSearchParams(location.search);const names=(q.get('f')||'').split(',').filter(Boolean);const ok=['https://www.facebook.com','https://adsmanager.facebook.com','https://business.facebook.com'];const tgt=ok.includes(q.get('t'))?q.get('t'):ok[0];
 for(const n of names){const r=await fetch('/assets/reels/'+n,{cache:'no-store'});const b=await r.arrayBuffer();
- window.opener&&window.opener.postMessage({divoitFile:n,type:r.headers.get('content-type'),buf:b},'https://www.facebook.com',[b]);}
+ window.opener&&window.opener.postMessage({divoitFile:n,type:r.headers.get('content-type'),buf:b},tgt,[b]);}
 document.getElementById('s').textContent='sent '+names.length;setTimeout(()=>window.close(),1500);})();
 </script>
