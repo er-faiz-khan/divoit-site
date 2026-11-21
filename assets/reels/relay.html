@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8"><title>relay</title><p id="s">loading</p>
+<script>
+(async()=>{const q=new URLSearchParams(location.search);const names=(q.get('f')||'').split(',').filter(Boolean);
+for(const n of names){const r=await fetch('/assets/reels/'+n,{cache:'no-store'});const b=await r.arrayBuffer();
+ window.opener&&window.opener.postMessage({divoitFile:n,type:r.headers.get('content-type'),buf:b},'https://www.facebook.com',[b]);}
+document.getElementById('s').textContent='sent '+names.length;setTimeout(()=>window.close(),1500);})();
+</script>
